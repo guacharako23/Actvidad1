@@ -7,15 +7,17 @@ import Formulario from './components/Formulario';
 function App() {
   return (
     <Router>
-      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h1 style={{ color: 'black', fontSize: '1.1rem' }}>Jesus Sanjuan A.</h1> {/* Título centrado y más pequeño */}
+      <div style={styles.header}>
+        <h1 style={styles.title}>RONALD BARRAZA MONTES</h1>
       </div>
-      <nav style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <Link to="/" className="btn" style={{ margin: '0 10px', backgroundColor: 'black', color: 'white', fontWeight: 'bold' }}>Inicio</Link>
-        <Link to="/contacto" className="btn" style={{ margin: '0 10px', backgroundColor: 'black', color: 'white', fontWeight: 'bold' }}>Contacto</Link>
-        <Link to="/quienessomos" className="btn" style={{ margin: '0 10px', backgroundColor: 'black', color: 'white', fontWeight: 'bold' }}>Nosotros</Link>
-        <Link to="/formulario" className="btn" style={{ margin: '0 10px', backgroundColor: 'black', color: 'white', fontWeight: 'bold' }}>Descuentos</Link>
+      
+      <nav style={styles.navbar}>
+        <Link to="/" style={styles.btn}>Inicio</Link>
+        <Link to="/contacto" style={styles.btn}>Contacto</Link>
+        <Link to="/quienessomos" style={styles.btn}>Nosotros</Link>
+        <Link to="/formulario" style={styles.btn}>Descuentos</Link>
       </nav>
+
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/contacto" element={<Contacto />} />
@@ -26,4 +28,54 @@ function App() {
   );
 }
 
+const styles = {
+  // Estilos del contenedor del título
+  header: {
+    textAlign: 'center',
+    marginBottom: '20px'
+  },
+  // Estilos del título
+  title: {
+    color: '#2c3e50',
+    fontSize: '2rem',
+    margin: 0
+  },
+  // Estilos de la barra de navegación
+  navbar: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: '20px'
+  },
+  // Estilos de los botones de navegación
+  btn: {
+    margin: '0 10px',
+    padding: '10px 20px',
+    backgroundColor: '#2980b9',
+    color: 'white',
+    fontWeight: 'bold',
+    borderRadius: '5px',
+    textDecoration: 'none',
+    transition: 'background-color 0.3s ease',
+    cursor: 'pointer'
+  },
+  // Estilo para el hover de los botones
+  btnHover: {
+    backgroundColor: '#3498db'
+  }
+};
+
+// Añadir efecto de hover mediante eventos de mouse
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('a');
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      button.style.backgroundColor = '#3498db'; // Cambia el color de fondo al pasar el ratón
+    });
+    button.addEventListener('mouseleave', () => {
+      button.style.backgroundColor = '#2980b9'; // Restaura el color original cuando el ratón se va
+    });
+  });
+});
+
 export default App;
+
